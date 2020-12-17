@@ -1,0 +1,46 @@
+{% extends "base/base-templates.html" %}
+{% block content %}
+
+<form method="POST" class="post-form" action="/cart/update/{{order.id}}">
+    {% csrf_token %}
+<div class="container">  
+<br>
+<div class="form-group row">  
+<label class="col-sm-1 col-form-label"></label>  
+<div class="col-sm-4">  
+<h3>Update Details</h3>  
+</div>  
+</div>  
+<div class="form-group row">  
+<label class="col-sm-2 col-form-label">Product:</label>  
+<div class="col-sm-4">  
+    <input type="text" name="product" id="id_product" required maxlength="20" value="{{order.product}}"/>  
+</div>  
+</div>  
+<div class="form-group row">  
+<label class="col-sm-2 col-form-label">Quantity:</label>  
+<div class="col-sm-4">  
+    <input type="text" name="quantity" id="id_quantity" required maxlength="100" value="{{order.quantity}}" />  
+</div>  
+</div>  
+<div class="form-group row">  
+<label class="col-sm-2 col-form-label">Detail:</label>  
+<div class="col-sm-4">  
+    <input type="text" name="detail" id="id_detail" required maxlength="254" value="{{order.detail}}" />  
+</div>  
+</div>  
+<div class="form-group row">  
+<label class="col-sm-2 col-form-label">Price:</label>  
+<div class="col-sm-4">  
+    <input type="text" name="price" id="id_price" required maxlength="15" value="{{order.price}}" />  
+</div>  
+</div>  
+<div class="form-group row">  
+<label class="col-sm-1 col-form-label"></label>  
+<div class="col-sm-4">  
+<button type="submit" class="btn btn-success">Update</button>  
+</div>  
+</div>  
+</div>  
+</form>
+{% endblock %}

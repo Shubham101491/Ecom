@@ -1,0 +1,140 @@
+{% extends "base/base-templates.html" %}
+{% block content %}
+{% load cart %}
+{% load custom_currency %}
+
+{% if messages %}
+<div class="col-md-12">
+    {% for message in messages %}
+    
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger alert-dismissible" style="text-align: left;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color: crimson!important">&times;</a>
+          <strong>{{message}}</strong>
+        </div>
+       {% else %}
+        <div class="alert alert-success alert-dismissible" style="text-align: left;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color: crimson!important">&times;</a>
+          <strong>{{message}}</strong>
+        </div>
+         {% endif %}
+
+    {% endfor %}
+{% endif %}
+  <main>
+            <!--================Cart Area =================-->
+
+      <section class="cart_area section_padding" mr>
+        <div class="container">
+          <div class="cart_inner">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  
+                  <tr>
+                     <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                {% for img in images %}
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="media">
+                        <div class="d-flex">
+                          <img class="rounded-circle" src="{{img.watch_pic.url}}" alt=""/>
+                        </div>
+                        <div class="media-body">
+                          <p>{{img.watch_detail}}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <h5>{{img.watch_price|currency}}</h5>
+                      
+                    </td>
+                    <td>
+
+                      <div class="product_count">
+                        <!-- For remove added product -->
+                        <form  method="POST" >
+                          {% csrf_token %}
+                        <input type="submit" value=" - " class="col-2 btn btn-block btn-secondary">
+                        <div class="img-cap">
+                          <input hidden type="text" name="product" value="{{img.id}}">
+                          <input hidden type="text" name="remove" value="True">
+                      </div>
+                     </form>
+
+                     <!-- Showing product quantity -->
+                        <div class="text-cener col">{{img|cart_quantity:request.session.cart}}</div>  
+
+                        <!-- for add product -->
+                        <form  method="POST" >
+                          {% csrf_token %}
+                        <input type="submit" value=" + " class="col-2 btn btn-block btn-secondary">
+                        <div class="img-cap">
+                          <input hidden type="text" name="product" value="{{img.id}}">
+                      </div>
+                     </form>
+                     
+                      <!-- <div class="product_count">
+                        <span type="submit" <span class="input-number-decrement"> <i class="ti-minus"></i></span></button>
+                        <input class="input-number" type="text" value="1" min="0" max="10">
+                        <span type="submit" class="input-number-increment" > <i class="ti-plus" ></i></span>
+                      </div> -->
+
+                    </td>
+                    <td>
+                      <h5>{{img|price_total:request.session.cart|currency}}</h5>
+                    </td>
+                  </tr>
+                  {% endfor %} 
+                  <tr class="bottom_button">
+                    <td>
+                      <a class="btn_1" href="{{BASE_URL}}shop/watch/">Update Cart</a>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="cupon_text float-right">
+                        <!-- <a class="btn_1" href="">Close Coupon</a> -->
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <h5>Subtotal</h5>
+                    </td>
+                    <td>
+                      <h5>{{products|total_price:request.session.cart|currency}}</h5>
+                    </td>
+                  </tr>
+                  </tr>
+                </tbody>
+              </table>
+
+              <form method="POST" action="/pages/checkout/" >
+                {% csrf_token %}
+                <input type="text" placeholder="address" name="address" id="" class="form-control">
+              <div class="checkout_btn_inner float-right">
+                
+                <!-- <a class="btn_1" href="{{BASE_URL}}shop/watch/">Continue Shopping</a> -->
+                <!-- <a class="btn_1 checkout_btn_1" href="{{BASE_URL}}pages/checkout/">Proceed to checkout</a> -->
+                
+              </div>
+              <input type="submit" class="btn float-right btn-outline-info col-lg-2" value="Checkout">
+            </form>
+
+            </div>
+          </div>
+      </section>
+    
+      <!-- ================End Cart Area ================= -->
+  </main>>
+
+{% endblock %}

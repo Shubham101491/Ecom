@@ -1,0 +1,34 @@
+{% extends "base/base-templates.html" %}
+{% block content %}
+
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>Product</th>  
+        <th>Quantity</th>  
+        <th>Detail</th>  
+        <th>Price</th>  
+        <th>Actions</th>
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for s in shop %}
+    <tr>  
+        <td>{{s.product}}</td>  
+        <td>{{s.quantity}}</td>  
+        <td>{{s.detail}}</td>  
+        <td>{{s.price}}</td>  
+        <td>  
+            <a href="http://127.0.0.1:8000/cart/edit/{{s.id}}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="http://127.0.0.1:8000/cart/delete/{{s.id}}">Delete</a>
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+
+<br>  
+<center><a href="http://127.0.0.1:8000/cart/carts" class="btn btn-primary">Add New Record</a></center>
+
+{% endblock %}

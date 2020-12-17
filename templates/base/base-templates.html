@@ -1,0 +1,154 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Project files -->
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+        <!-- JS here -->
+        
+        <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <!-- Jquery, Popper, Bootstrap -->
+        <!-- <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script> original -->
+        <script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}'"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}'"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}'"></script>
+        <!-- Jquery Mobile Menu -->
+        <script src="{% static 'assets/js/jquery.slicknav.min.js' %}'"></script>
+    
+        <!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}'"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}'"></script>
+    
+        <!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'assets/js/wow.min.js' %}'"></script>
+        <script src="{% static 'assets/js/animated.headline.js' %}'"></script>
+        
+        <!-- Scroll up, nice-select, sticky -->
+        <script src="{% static 'assets/js/jquery.scrollUp.min.js' %}'"></script>
+        <script src="{% static 'assets/js/jquery.nice-select.min.js' %}'"></script>
+        <script src="{% static 'assets/js/jquery.sticky.js' %}'"></script>
+        <script src="{% static 'assets/js/jquery.magnific-popup.js' %}'"></script>
+    
+        <!-- contact js -->
+        <script src="{% static 'assets/js/contact.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+        <!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <title>Shopping world!</title>
+  </head>
+  <body>
+       <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="menu-wrapper">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href=""><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                        </div>
+                        <!-- Main-menu -->
+                        <div class="main-menu d-none d-lg-block">
+                           
+                            <nav>                                                
+                                <ul id="navigation">  
+                                    <li><a href="{{BASE_URL}}">Home</a></li>
+                                    <li><a href="{{BASE_URL}}shop/watch">shop</a></li>
+                                    <li><a href="{{BASE_URL}}about/about_shop">about</a></li>
+                                    <li class="hot"><a>Letest</a>
+                                        <ul class="submenu">
+                                            <li><a href="{{BASE_URL}}letest/product_list"> Product list</a></li>
+                                            <li><a href="{{BASE_URL}}letest/product_detail"> Product Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="{{BASE_URL}}blog/blogs">Blog</a></li>
+                                            <li><a href="{{BASE_URL}}blog/blog_details">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Pages</a>
+                                        <ul class="submenu">
+                                            {% if request.session.register_user %}
+                                            <li><a href="{{BASE_URL}}pages/logout">Logout</a></li>
+                                            <!-- <li><a href="{{BASE_URL}}pages/change-password">Change Password</a></li> -->
+                                            <a href="http://127.0.0.1:8000/accounts/password_change/">Change Password</a>
+
+                                            {% else %}
+                                            <li><a href="{{BASE_URL}}pages/login">Login</a></li>
+                                            {% endif %}
+                                            <li><a href="{{BASE_URL}}pages/cart">Cart</a></li>
+                                            <li><a href="{{BASE_URL}}pages/elements">Element</a></li>
+                                            <li><a href="{{BASE_URL}}pages/confirmation">Confirmation</a></li>
+                                            <li><a href="{{BASE_URL}}pages/checkout">Product Checkout</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{BASE_URL}}contact/contacts">Contact</a></li>
+                                    <li><a href="{{BASE_URL}}cart/carts">Cart</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Header Right -->
+                        <div class="header-right">
+                            <ul>
+
+                            <!-- <form method="get" action="/search">
+                                <input hidden type="text" name="query" id="search">
+                                <li> <a href="{{BASE_URL}}search"><span class="flaticon-search"></span></a></li>
+                            </form> -->
+
+                                <li> <a href="{{BASE_URL}}pages/login"><span class="flaticon-user"></span></a></li>
+                                <!-- <li><a href="{{BASE_URL}}pages/cart/"><span class="flaticon-shopping-cart"></span></a> </li> -->
+                                
+                                <li><a href="{{BASE_URL}}shop/new/{{img.id}}"><span class="flaticon-shopping-cart"  id="cart">0</span></a> </li>
+                            
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+   
+    {% block content %}
+    {% endblock %}
+
+    <center><footer>
+      <h5>Email Us - shubhamupadhyay1014@gmail.com </h5>
+    </footer></center>
+
+  </body>
+</html>
